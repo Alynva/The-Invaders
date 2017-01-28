@@ -7,7 +7,7 @@
 #define LIMITEYMIN 5
 #define LIMITEYMAX 50
 
-#define QTDTIROS 20
+#define QTDTIROS 5
 
 using namespace std;
 
@@ -557,11 +557,11 @@ int main() {
 			}
 		}
 		jogador.mover();
-		if (rand() % 100 < 50);
+//		if (rand() % 100 < 50)
 			jogador.atirar();
 		jogador.imprime();
 		
-		Sleep(40);
+		Sleep(200);
 	} while (true);
 	
 	goToXY(0, LIMITEYMAX+10);
