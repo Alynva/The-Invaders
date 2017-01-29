@@ -12,7 +12,7 @@
 using namespace std;
 
 // HANDLE usado para mudar o cursor ou a cor
-HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+console = GetStdHandle(STD_OUTPUT_HANDLE);
 // csbi usado para pegar a posição do cursor
 CONSOLE_SCREEN_BUFFER_INFO csbi;
 // CursorPosition usado para guardar a posição do cursor
