@@ -6,7 +6,7 @@
 
 class Atirador : public Objeto {
 	public:
-		Atirador(COORD);
+		Atirador(COORD, COORD);
 		void goToMouseX();
 		void imprime() const;
 };

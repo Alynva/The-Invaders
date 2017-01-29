@@ -45,7 +45,7 @@ int main() {
 	
 	// Criando um vetor de Objetos, utilizando a classe base
 	Objeto *objetos[13] = {NULL};
-	Atirador jogador({10, LIMITEYMAX});
+	Atirador jogador({10, LIMITEYMAX}, maxOnScreen);
 	
 	// Inicializando os objetos com classes derivadas da classe base
 	
@@ -77,19 +77,6 @@ int main() {
 	
 	do {
 		system("cls");
-		
-		for (i = 0; i < maxOnScreen.X; i++) {
-			goToXY(i, 0); cout << "-";
-			goToXY(i, maxOnScreen.Y); cout << "-";
-		}
-		for (i = 0; i < maxOnScreen.Y; i++) {
-			goToXY(0, i); cout << "|";
-			goToXY(maxOnScreen.X, i); cout << "|";
-		}
-		goToXY(0, 0); cout << "+";
-		goToXY(maxOnScreen.X, 0); cout << "+";
-		goToXY(0, maxOnScreen.Y); cout << "+";
-		goToXY(maxOnScreen.X, maxOnScreen.Y); cout << "+";
 		
 		for (i = 0; i < 13; i++) {
 			if (objetos[i] != NULL) {
