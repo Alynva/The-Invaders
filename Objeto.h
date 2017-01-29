@@ -25,11 +25,11 @@ class Objeto {
 		int Color = 15;
 		Tiro *tiros[1] = { NULL };
 	public:
-		const COORD HitBoxRU; // U == "UP" && R == "RIGTH"
-		const COORD HitBoxLD; // D == "DOWN" && L == "LEFT"
+		static COORD HitBoxRU; // U == "UP" && R == "RIGTH"
+		static COORD HitBoxLD; // D == "DOWN" && L == "LEFT"
 		const COORD Limites;
 		
-		Objeto(COORD, COORD = {0, 0}, COORD = {0, 0}, COORD = {10, 10});
+		Objeto(COORD, COORD = {10, 10});
 		void setX(int);
 		int getX() const;
 		void setY(int);

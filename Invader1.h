@@ -5,6 +5,9 @@
 
 class Invader1 : public Objeto {
 	public:
+		static constexpr COORD HitBoxRU = {5, 3};
+		static constexpr COORD HitBoxLD = {-5, -4};
+		
 		Invader1(COORD, COORD);
 		void imprime() const;
 };

@@ -51,3 +51,5 @@ Temporary Items
 Objeto.o
 *.o
 Atirador.o
+*.layout
+*.o

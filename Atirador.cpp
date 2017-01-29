@@ -1,13 +1,13 @@
 #include "Atirador.h"
 
-Atirador::Atirador(COORD posicao, COORD limites):Objeto(posicao, {6, 4}, {-6, 0}, limites) {
+Atirador::Atirador(COORD posicao, COORD limites):Objeto(posicao, limites) {
 }
 
 void Atirador::goToMouseX() {
-	if (getMouseXY().X / 8 <= LIMITEXMIN)
-		this->setX(LIMITEXMIN);
-	else if (getMouseXY().X / 8 >= LIMITEXMAX)
-		this->setX(LIMITEXMAX);
+	if (getMouseXY().X / 8 + this->HitBoxLD.X <= 0)
+		this->setX(this->HitBoxLD.X * -1 - 1);
+	else if (getMouseXY().X / 8 + this->HitBoxRU.X >= this->Limites.X)
+		this->setX(this->Limites.X - this->HitBoxRU.X + 1);
 	else
 		this->setX(getMouseXY().X / 8);
 	this->mover();
