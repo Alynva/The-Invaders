@@ -80,16 +80,6 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit5]
-FileName=baseInclude.h
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit4]
 FileName=Tiro.cpp
 CompileCpp=1
@@ -101,16 +91,6 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit6]
-FileName=Objeto.cpp
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit7]
 FileName=Invader1.cpp
 CompileCpp=1
 Folder=
@@ -120,7 +100,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit8]
+[Unit7]
 FileName=Invader2.cpp
 CompileCpp=1
 Folder=
@@ -130,7 +110,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit9]
+[Unit8]
 FileName=Invader3.cpp
 CompileCpp=1
 Folder=
@@ -140,7 +120,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit10]
+[Unit9]
 FileName=Invader4.cpp
 CompileCpp=1
 Folder=
@@ -150,7 +130,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit11]
+[Unit10]
 FileName=Invader5.cpp
 CompileCpp=1
 Folder=
@@ -160,7 +140,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit12]
+[Unit11]
 FileName=Atirador.cpp
 CompileCpp=1
 Folder=
@@ -170,7 +150,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit13]
+[Unit12]
 FileName=Atirador.h
 CompileCpp=1
 Folder=
@@ -180,7 +160,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit14]
+[Unit13]
 FileName=goToXY.h
 CompileCpp=1
 Folder=
@@ -190,7 +170,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit15]
+[Unit14]
 FileName=getMouseXY.h
 CompileCpp=1
 Folder=
@@ -200,7 +180,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit16]
+[Unit15]
 FileName=Invader1.h
 CompileCpp=1
 Folder=
@@ -210,7 +190,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit17]
+[Unit16]
 FileName=Invader2.h
 CompileCpp=1
 Folder=
@@ -220,7 +200,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit18]
+[Unit17]
 FileName=Invader3.h
 CompileCpp=1
 Folder=
@@ -230,7 +210,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit19]
+[Unit18]
 FileName=Invader4.h
 CompileCpp=1
 Folder=
@@ -240,7 +220,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit20]
+[Unit19]
 FileName=Invader5.h
 CompileCpp=1
 Folder=
@@ -250,7 +230,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit21]
+[Unit20]
 FileName=Objeto.h
 CompileCpp=1
 Folder=
@@ -260,8 +240,28 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit22]
+[Unit21]
 FileName=Tiro.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit22]
+FileName=Untitled1
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit5]
+FileName=Objeto.cpp
 CompileCpp=1
 Folder=
 Compile=1

@@ -11,38 +11,10 @@ int main() {
 	
 	int i = 0, j = 0;
 	
-	bool pronto = false;
-//	COORD maxOnScreen {161, 54};
-	COORD maxOnScreen {50, 20};
-	string cmd;
-	short int x, y;
-	do {
-		system("cls");
-		
-		for (i = 0; i < maxOnScreen.X; i++) {
-			goToXY(i, 0); cout << "-";
-			goToXY(i, maxOnScreen.Y); cout << "-";
-		}
-		for (i = 0; i < maxOnScreen.Y; i++) {
-			goToXY(0, i); cout << "|";
-			goToXY(maxOnScreen.X, i); cout << "|";
-		}
-		goToXY(0, 0); cout << "+";
-		goToXY(maxOnScreen.X, 0); cout << "+";
-		goToXY(0, maxOnScreen.Y); cout << "+";
-		goToXY(maxOnScreen.X, maxOnScreen.Y); cout << "+";
-		
-		goToXY(2, 0);
-		
-		cout << "Maximize a área para caber dentro da sua tela (formado \"x: [valor] y: [valor]\")(atual: " << maxOnScreen.X << " " << maxOnScreen.Y << ")(digite \"sair\" para continuar): ";
-		cin >> cmd;
-		if (cmd != "sair") {
-			cin >> x >> cmd >> y;
-			maxOnScreen = {x, y};
-		} else {
-			pronto = true;
-		}
-	} while (!pronto);
+	CONSOLE_SCREEN_BUFFER_INFO csbi;
+
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+	COORD maxOnScreen {csbi.srWindow.Right - csbi.srWindow.Left, csbi.srWindow.Bottom - csbi.srWindow.Top};
 	
 	// Criando um vetor de Objetos, utilizando a classe base
 	Objeto *objetos[13] = {NULL};
