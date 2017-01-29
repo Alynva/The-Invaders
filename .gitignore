@@ -48,3 +48,6 @@ Temporary Items
 *.exe
 *.o
 *.o
+Objeto.o
+*.o
+Atirador.o
