@@ -1,6 +1,6 @@
 #include "Objeto.h"
 
-Objeto::Objeto(COORD posicao, COORD hitboxur, COORD hitboxdl, COORD limites):HitBoxUR(hitboxur), HitBoxDL(hitboxdl), Limites(limites) 
+Objeto::Objeto(COORD posicao, COORD hitboxru, COORD hitboxld, COORD limites):HitBoxRU(hitboxru), HitBoxLD(hitboxld), Limites(limites) 
 {
 	this->setPosicao(posicao);
 	this->Direcao = {1, 0};
@@ -58,8 +58,11 @@ int Objeto::getDirecaoY() const {
 
 void Objeto::mover() {
 	this->setPosicao({this->getX() + this->Direcao.X, this->getY() + this->Direcao.Y});
-	
-	if ((this->getX() <= LIMITEXMIN && this->getDirecaoX() < 0) || (this->getX() >= LIMITEXMAX && this->getDirecaoX() > 0)) {
+		
+	if (
+		(this->getX() + this->HitBoxLD.X < 0 && this->getDirecaoX() < 0) ||
+		(this->getX() + this->HitBoxRU.X > this->Limites.X && this->getDirecaoX() > 0)
+	) {
 		this->setDirecaoX(this->getDirecaoX() * -1);
 		this->mover();
 	}

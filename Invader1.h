@@ -5,7 +5,7 @@
 
 class Invader1 : public Objeto {
 	public:
-		Invader1(COORD);
+		Invader1(COORD, COORD);
 		void imprime() const;
 };
 

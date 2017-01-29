@@ -25,8 +25,8 @@ class Objeto {
 		int Color = 15;
 		Tiro *tiros[1] = { NULL };
 	public:
-		const COORD HitBoxUR; // U == "UP" && R == "RIGTH"
-		const COORD HitBoxDL; // D == "DOWN" && L == "LEFT"
+		const COORD HitBoxRU; // U == "UP" && R == "RIGTH"
+		const COORD HitBoxLD; // D == "DOWN" && L == "LEFT"
 		const COORD Limites;
 		
 		Objeto(COORD, COORD = {0, 0}, COORD = {0, 0}, COORD = {10, 10});
