@@ -1,6 +1,6 @@
 #include "Objeto.h"
 
-Objeto::Objeto(COORD posicao, COORD hitboxur, COORD hitboxdl):HitBoxUR(hitboxur), HitBoxDL(hitboxdl) {
+Objeto::Objeto(COORD posicao, COORD hitboxur, COORD hitboxdl, COORD limites):HitBoxUR(hitboxur), HitBoxDL(hitboxdl), Limites(limites) {
 	this->setPosicao(posicao);
 	this->Direcao = {1, 0};
 }
