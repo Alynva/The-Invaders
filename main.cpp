@@ -22,10 +22,10 @@ int main() {
 	cout << endl << "\t\t\t\tDICA: QUANTO MENOR A FONTE, MAIS ESPECO HAVERA" << endl << endl;
 	cout << "\t\t2.2.\tPARA ALTERAR O TAMANHO DA JANELA (para as versoes anteriores ao Windows 10)" << endl;
 	cout << "\t\t\t2.2.1.\tNavegue ate a aba \"Layout\";" << endl;
-	cout << "\t\t\t2.2.2.\tDefina o tamanho da janela na area \"Tamanho da janela\";" << endl;
+	cout << "\t\t\t2.2.2.\tDefina os valores na area \"Tamanho da janela\";" << endl;
 	cout << "\t\t\t2.2.3.\tApos defini-lo, certifique-se que os valores de \"Tamanho do buffer de tela\" sao iguais aos de \"Tamanho da janela\", para que nao apareca a barra de rolagem e possa haver uma maior utilizacao da janela;" << endl;
 	cout << "\t3.\tDe OK;" << endl;
-	cout << "\t4.\tApos terminar de ler as instrucoes, feche o programa e abre-o novamente para que as alteracoes tenham efeito;" << endl;
+	cout << "\t4.\tCaso a alteracao tenha cortado alguma instrucao que voce queira ler, feche o programa e abre-o novamente para que o programa as imprimam corretamente;" << endl;
 	cout << "\t5.\tAgora sera necessario que voce digite o tamanho da fonte inserida (exemplos: \"4 x 6\", \"8 x 8\", \"8 x 12\"): ";
 	cin >> wFont >> null >> hFont;
 	
@@ -101,7 +101,7 @@ int main() {
 //				}
 			}
 		}
-		jogador.goToMouseX();
+		jogador.goToMouseX(wFont);
 //		if (rand() % 100 < 50)
 			jogador.atirar({0, -1});
 		jogador.imprime();
