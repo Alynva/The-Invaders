@@ -1,6 +1,6 @@
 #include "Atirador.h"
 
-Atirador::Atirador(COORD posicao, COORD limites):Objeto(posicao, limites) {
+Atirador::Atirador(COORD posicao, COORD limites):Objeto(posicao, {6, 4}, {-6, 0}, limites) {
 }
 
 void Atirador::goToMouseX() {

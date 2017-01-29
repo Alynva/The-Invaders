@@ -12,7 +12,6 @@ int main() {
 	int i = 0, j = 0;
 	
 	bool pronto = false;
-//	COORD maxOnScreen {161, 54};
 	COORD maxOnScreen {161, 54};
 	string cmd;
 	short int x, y;
@@ -50,29 +49,29 @@ int main() {
 	
 	// Inicializando os objetos com classes derivadas da classe base
 	
-	objetos[0] = new Invader5({maxOnScreen.X / 2, 5}, maxOnScreen);
+	objetos[0] = new Invader5({35, 5}, maxOnScreen);
 	objetos[0]->setDirecaoX(3);
 	objetos[0]->setColor(12);
 	
 	for (i = 1, j = 0; i < 4; i++, j++) {
-		objetos[i] = new Invader2({j * 22 + maxOnScreen.X / 2, 15}, maxOnScreen);
+		objetos[i] = new Invader2({j * 22 + 8 + LIMITEXMIN, 15}, maxOnScreen);
 		objetos[i]->setDirecaoX(-1);
 		objetos[i]->setColor(i);
 	}
 	
 	for (i = 4, j = 0; i < 7; i++, j++) {
-		objetos[i] = new Invader4({j * 14 + maxOnScreen.X / 2, 25}, maxOnScreen);
+		objetos[i] = new Invader4({j * 14 + 15 + LIMITEXMIN, 25}, maxOnScreen);
 		objetos[i]->setColor(i);
 	}
 	
 	for (i = 7, j = 0; i < 10; i++, j++) {
-		objetos[i] = new Invader3({j * 18 + maxOnScreen.X / 2, 35}, maxOnScreen);
+		objetos[i] = new Invader3({j * 18 + 10 + LIMITEXMIN, 35}, maxOnScreen);
 		objetos[i]->setDirecaoX(-1);
 		objetos[i]->setColor(i);
 	}
 	
 	for (i = 10, j = 0; i < 13; i++, j++) {
-		objetos[i] = new Invader1({j * 16 + maxOnScreen.X / 2, 45}, maxOnScreen);
+		objetos[i] = new Invader1({j * 16 + 12 + LIMITEXMIN, 45}, maxOnScreen);
 		objetos[i]->setColor(i+3);
 	}
 	

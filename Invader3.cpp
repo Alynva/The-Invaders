@@ -1,6 +1,6 @@
 #include "Invader3.h"
 
-Invader3::Invader3(COORD posicao, COORD limites):Objeto(posicao, limites) {
+Invader3::Invader3(COORD posicao, COORD limites):Objeto(posicao, {7, 3}, {-7, -4}, limites) {
 }
 
 void Invader3::imprime() const {
