@@ -8,6 +8,28 @@
 #include "Atirador.h"
 
 int main() {
+	int wFont, hFont;
+	string null;
+	
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
+	cout << "\t>>\t\t!!!\t\t\tINSTRUCOES INICIAIS\t\t\t!!!\t\t<<" << endl << endl;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+	cout << "\t1.\tClique com o botao direito na barra superior da janela;" << endl;
+	cout << "\t2.\tClique em \"Propriedades\";" << endl;
+	cout << "\t\t2.1.\tPARA ALTERAR O TAMANHO DA FONTE" << endl;
+	cout << "\t\t\t2.1.1.\tNavegue ate a aba \"Fonte\";" << endl;
+	cout << "\t\t\t2.1.2.\tEscolha o tamanho desejado, lembre-se do escolhido pois sera necessario inseri-lo no termino das instrucoes;" << endl;
+	cout << endl << "\t\t\t\tDICA: QUANTO MENOR A FONTE, MAIS ESPECO HAVERA" << endl << endl;
+	cout << "\t\t2.2.\tPARA ALTERAR O TAMANHO DA JANELA (para as versoes anteriores ao Windows 10)" << endl;
+	cout << "\t\t\t2.2.1.\tNavegue ate a aba \"Layout\";" << endl;
+	cout << "\t\t\t2.2.2.\tDefina o tamanho da janela na area \"Tamanho da janela\";" << endl;
+	cout << "\t\t\t2.2.3.\tApos defini-lo, certifique-se que os valores de \"Tamanho do buffer de tela\" sao iguais aos de \"Tamanho da janela\", para que nao apareca a barra de rolagem e possa haver uma maior utilizacao da janela;" << endl;
+	cout << "\t3.\tDe OK;" << endl;
+	cout << "\t4.\tApos terminar de ler as instrucoes, feche o programa e abre-o novamente para que as alteracoes tenham efeito;" << endl;
+	cout << "\t5.\tAgora sera necessario que voce digite o tamanho da fonte inserida (exemplos: \"4 x 6\", \"8 x 8\", \"8 x 12\"): ";
+	cin >> wFont >> null >> hFont;
+	
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	
 	int i = 0, j = 0;
 	
