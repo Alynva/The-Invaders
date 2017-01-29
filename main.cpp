@@ -7,11 +7,41 @@
 #include "Invader5.h"
 #include "Atirador.h"
 
-#include "goToXY.h"
-
 int main() {
 	
 	int i = 0, j = 0;
+	
+	bool pronto = false;
+	COORD maxOnScreen {10, 10};
+	string cmd;
+	short int x, y;
+	do {
+		system("cls");
+		
+		for (i = 0; i < maxOnScreen.X; i++) {
+			goToXY(i, 0); cout << "-";
+			goToXY(i, maxOnScreen.Y); cout << "-";
+		}
+		for (i = 0; i < maxOnScreen.Y; i++) {
+			goToXY(0, i); cout << "|";
+			goToXY(maxOnScreen.X, i); cout << "|";
+		}
+		goToXY(0, 0); cout << "+";
+		goToXY(maxOnScreen.X, 0); cout << "+";
+		goToXY(0, maxOnScreen.Y); cout << "+";
+		goToXY(maxOnScreen.X, maxOnScreen.Y); cout << "+";
+		
+		goToXY(2, 0);
+		
+		cout << "Maximize a área para caber dentro da sua tela (formado \"x: [valor] y: [valor]\")(atual: " << maxOnScreen.X << " " << maxOnScreen.Y << ")(digite \"sair\" para continuar): ";
+		cin >> cmd;
+		if (cmd != "sair") {
+			cin >> x >> cmd >> y;
+			maxOnScreen = {x, y};
+		} else {
+			pronto = true;
+		}
+	} while (!pronto);
 	
 	// Criando um vetor de Objetos, utilizando a classe base
 	Objeto *objetos[13] = {NULL};
@@ -48,14 +78,18 @@ int main() {
 	do {
 		system("cls");
 		
-		for (i = 0; i < LIMITEXMAX + LIMITEXMIN; i++) {
+		for (i = 0; i < maxOnScreen.X; i++) {
 			goToXY(i, 0); cout << "-";
-			goToXY(i, LIMITEYMAX + 1); cout << "-";
+			goToXY(i, maxOnScreen.Y); cout << "-";
 		}
-		for (i = 0; i < LIMITEYMAX + 1; i++) {
+		for (i = 0; i < maxOnScreen.Y; i++) {
 			goToXY(0, i); cout << "|";
-			goToXY(LIMITEXMAX + LIMITEXMIN, i); cout << "|";
+			goToXY(maxOnScreen.X, i); cout << "|";
 		}
+		goToXY(0, 0); cout << "+";
+		goToXY(maxOnScreen.X, 0); cout << "+";
+		goToXY(0, maxOnScreen.Y); cout << "+";
+		goToXY(maxOnScreen.X, maxOnScreen.Y); cout << "+";
 		
 		for (i = 0; i < 13; i++) {
 			if (objetos[i] != NULL) {
@@ -86,7 +120,7 @@ int main() {
 		jogador.imprime();
 		
 		Sleep(200);
-	} while (false);
+	} while (true);
 	
 	goToXY(0, LIMITEYMAX+10);
 	
