@@ -52,3 +52,4 @@ Objeto.o
 *.o
 Atirador.o
 *.win
+*.layout
