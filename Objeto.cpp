@@ -1,7 +1,6 @@
 #include "Objeto.h"
 
-Objeto::Objeto(COORD posicao, COORD hitboxru, COORD hitboxld, COORD limites):HitBoxRU(hitboxru), HitBoxLD(hitboxld), Limites(limites) 
-{
+Objeto::Objeto(COORD posicao, COORD hitboxru, COORD hitboxld, COORD limites):HitBoxRU(hitboxru), HitBoxLD(hitboxld), Limites(limites) {
 	this->setPosicao(posicao);
 	this->Direcao = {1, 0};
 }
@@ -58,12 +57,32 @@ int Objeto::getDirecaoY() const {
 
 void Objeto::mover() {
 	this->setPosicao({this->getX() + this->Direcao.X, this->getY() + this->Direcao.Y});
-		
+	
 	if (
 		(this->getX() + this->HitBoxLD.X < 0 && this->getDirecaoX() < 0) ||
 		(this->getX() + this->HitBoxRU.X > this->Limites.X && this->getDirecaoX() > 0)
 	) {
 		this->setDirecaoX(this->getDirecaoX() * -1);
+		this->mover();
+	} else if (this->getX() + this->HitBoxLD.X < 0 && this->getDirecaoX() == 0) {
+		this->setDirecaoX(1);
+		this->mover();
+	} else if (this->getX() + this->HitBoxRU.X > this->Limites.X && this->getDirecaoX() == 0) {
+		this->setDirecaoX(-1);
+		this->mover();
+	}
+	
+	if (
+		(this->getY() - this->HitBoxRU.Y < 0 && this->getDirecaoY() < 0) ||
+		(this->getY() - this->HitBoxLD.Y > this->Limites.Y && this->getDirecaoY() > 0)
+	) {
+		this->setDirecaoY(this->getDirecaoY() * -1);
+		this->mover();
+	} else if (this->getY() - this->HitBoxRU.Y < 0 && this->getDirecaoY() == 0) {
+		this->setDirecaoY(1);
+		this->mover();
+	} else if (this->getY() - this->HitBoxLD.Y > this->Limites.Y && this->getDirecaoY() == 0) {
+		this->setDirecaoY(-1);
 		this->mover();
 	}
 }
