@@ -26,7 +26,7 @@ int main() {
 	cout << "\t\t\t2.2.3.\tApos defini-lo, certifique-se que os valores de \"Tamanho do buffer de tela\" sao iguais aos de \"Tamanho da janela\", para que nao apareca a barra de rolagem e possa haver uma maior utilizacao da janela;" << endl;
 	cout << "\t3.\tDe OK;" << endl;
 	cout << "\t4.\tCaso a alteracao tenha cortado alguma instrucao que voce queira ler, feche o programa e abre-o novamente para que o programa as imprimam corretamente;" << endl;
-	cout << "\t5.\tAgora sera necessario que voce digite o tamanho da fonte inserida (exemplos: \"4 x 6\", \"8 x 8\", \"8 x 12\"): ";
+	cout << "\t5.\tAgora, para calibrar a posicao do mouse, sera necessario que voce digite o tamanho da fonte inserida (exemplos: \"4 x 6\", \"8 x 8\", \"8 x 12\"): ";
 	cin >> wFont >> null >> hFont;
 	
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
