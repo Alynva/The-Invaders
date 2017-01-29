@@ -1,6 +1,7 @@
 #include "Atirador.h"
 
-Atirador::Atirador(COORD posicao, COORD limites):Objeto(posicao, {4, 6}, {0, 6}, limites) {}
+Atirador::Atirador(COORD posicao, COORD limites):Objeto(posicao, {4, 6}, {0, 6}, limites) {
+}
 
 void Atirador::goToMouseX() {
 	if (getMouseXY().X / 8 <= LIMITEXMIN)

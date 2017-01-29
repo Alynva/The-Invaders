@@ -1,6 +1,7 @@
 #include "Invader3.h"
 
-Invader3::Invader3(COORD posicao):Objeto(posicao) {}
+Invader3::Invader3(COORD posicao):Objeto(posicao) {
+}
 
 void Invader3::imprime() const {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), this->getColor());
