@@ -75,8 +75,55 @@ int main() {
 		objetos[i]->setColor(i+3);
 	}
 	
+	// CLIQUE DO MOUSE
+	
+    DWORD cNumRead, fdwMode, fdwSaveOldMode, q; 
+    INPUT_RECORD irInBuf[128]; 
+
+	HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
+	GetConsoleMode(hStdin, &fdwSaveOldMode);
+	fdwMode = ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT; 
+    SetConsoleMode(hStdin, fdwMode);
+    
+	//
+	int state = 0;
 	do {
-		system("cls");
+//		system("cls");
+
+//		for (i = 0; i < maxOnScreen.X + 1; i++) {
+//			for (j = 0; j < maxOnScreen.Y + 1; j++) {
+//				goToXY(i, j); cout << " ";
+//			}
+//		}
+		
+		// TESTE EVENTO DO MOUSE
+//		GetNumberOfConsoleInputEvents (hStdin, &cNumRead);
+//		if (cNumRead) {
+			ReadConsoleInput(hStdin, irInBuf, 128, &cNumRead);
+//			cout << 1;
+			for (q = 0; q < cNumRead; q++) {
+//				cout << cNumRead;
+	        	if (irInBuf[q].EventType == MOUSE_EVENT) {
+	//        		printf("\nMouse event: ");
+	        		if (irInBuf[q].Event.MouseEvent.dwEventFlags == 0) {
+	        			if(irInBuf[q].Event.MouseEvent.dwButtonState == FROM_LEFT_1ST_BUTTON_PRESSED) {
+//			                printf("left button press \n");
+							state = 1;
+			            } else if(irInBuf[q].Event.MouseEvent.dwButtonState == RIGHTMOST_BUTTON_PRESSED) {
+	//		                printf("right button press \n");
+							state = 2;
+			            } else {
+	//		                printf("button press\n");
+							state = 3;
+			            }
+					}
+				}
+	        }
+//	    }
+//	    cout << state;
+//		if (state == 1) cout << "left";
+		
+		//
 		
 		for (i = 0; i < 13; i++) {
 			if (objetos[i] != NULL) {
