@@ -27,8 +27,9 @@ class Objeto {
 	public:
 		const COORD HitBoxUR; // U == "UP" && R == "RIGTH"
 		const COORD HitBoxDL; // D == "DOWN" && L == "LEFT"
+		const COORD Limites;
 		
-		Objeto(COORD, COORD = {0, 0}, COORD = {0, 0});
+		Objeto(COORD, COORD = {0, 0}, COORD = {0, 0}, COORD = {10, 10});
 		void setX(int);
 		int getX() const;
 		void setY(int);
