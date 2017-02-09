@@ -102,16 +102,3 @@ void Objeto::setColor(int color) {
 int Objeto::getColor() const {
 	return this->Color;
 }
-
-void Objeto::atirar(COORD direcao) {
-	int i = 0;
-	bool achou = false;
-	while (!achou) {
-		if (this->tiros[i] == NULL) {
-			achou = true;
-//			tiros[i] = new Tiro({(short int) this->getX(), (short int) this->getY() - 4});
-//			tiros[i].setDirecao(direcao);
-		}
-		i++;
-	}
-}

@@ -45,7 +45,6 @@ class Objeto {
 		void moverY(int);
 		void setColor(int);
 		int getColor() const;
-		void atirar(COORD);
 		virtual void imprime() const = 0;
 };
 
