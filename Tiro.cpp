@@ -5,8 +5,8 @@ using namespace std;
 
 #include "goToXY.h"
 
-Tiro::Tiro(short int x, short int y) {
-	this->setPosicao({x, y});
+Tiro::Tiro(COORD posicao) {
+	this->setPosicao(posicao);
 };
 
 void Tiro::setPosicao(COORD posicao) {
@@ -31,5 +31,7 @@ void Tiro::mover() {
 }
 void Tiro::imprime() const {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+	goToXY(this->Posicao.X, this->Posicao.Y - 1); cout << "*";
 	goToXY(this->Posicao.X, this->Posicao.Y); cout << "*";
+	goToXY(this->Posicao.X, this->Posicao.Y + 1); cout << "*";
 }

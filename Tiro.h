@@ -8,7 +8,7 @@ class Tiro {
 		COORD Posicao;
 		COORD Direcao = {0, -1};
 	public:
-		Tiro(short int, short int);
+		Tiro(COORD);
 		void setPosicao(COORD);
 		COORD getPosicao() const;
 		void setDirecao(COORD);
