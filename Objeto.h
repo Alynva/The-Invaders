@@ -23,7 +23,6 @@ class Objeto {
 		COORD Posicao;
 		COORD Direcao;
 		int Color = 15;
-		Tiro *tiros[1] = { NULL };
 	public:
 		const COORD HitBoxRU; // U == "UP" && R == "RIGTH"
 		const COORD HitBoxLD; // D == "DOWN" && L == "LEFT"

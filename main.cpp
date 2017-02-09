@@ -56,14 +56,17 @@ int main() {
 	// Criando um vetor de Objetos, utilizando a classe base
 	Objeto *objetos[13] = {NULL};
 	Atirador jogador({10, maxOnScreen.Y}, maxOnScreen);
+	Tiro *tiroJogador[1](jogador.getX(), jogador.getY() + jogador.HitBoxRU.Y);
 	
 	// Inicializando os objetos com classes derivadas da classe base
 	
+
 	objetos[0] = new Invader5({10, 5}, maxOnScreen);
 	objetos[0]->setPosicao({(short int) objetos[0]->getX() + objetos[0]->HitBoxRU.X, (short int) objetos[0]->getY()});
 	objetos[0]->setDirecaoX(3);
 	objetos[0]->setColor(12);
 	
+	posInicial = rand() % maxOnScreen.X;
 	for (i = 1, j = 0; i < 4; i++, j++) {
 		objetos[i] = new Invader2({(short int) j * 23 + 30, (short int) 13}, maxOnScreen);
 		objetos[i]->setPosicao({(short int) objetos[i]->getX() + objetos[i]->HitBoxRU.X, (short int) objetos[i]->getY()});
@@ -71,22 +74,27 @@ int main() {
 		objetos[i]->setColor(i);
 	}
 	
+	posInicial = rand() % maxOnScreen.X;
 	for (i = 4, j = 0; i < 7; i++, j++) {
-		objetos[i] = new Invader4({j * 15 + 20, 23}, maxOnScreen);
+		objetos[i] = new Invader4({j * 15 + posInicial, 23}, maxOnScreen);
 		objetos[i]->setPosicao({objetos[i]->getX() + objetos[i]->HitBoxRU.X, objetos[i]->getY()});
+		objetos[i]->setDirecaoX(1);
 		objetos[i]->setColor(i);
 	}
 	
+	posInicial = rand() % maxOnScreen.X;
 	for (i = 7, j = 0; i < 10; i++, j++) {
-		objetos[i] = new Invader1({j * 19 + 50, 31}, maxOnScreen);
+		objetos[i] = new Invader1({j * 19 + posInicial, 31}, maxOnScreen);
 		objetos[i]->setPosicao({objetos[i]->getX() + objetos[i]->HitBoxRU.X, objetos[i]->getY()});
 		objetos[i]->setDirecaoX(-1);
 		objetos[i]->setColor(i);
 	}
 	
+	posInicial = rand() % maxOnScreen.X;
 	for (i = 10, j = 0; i < 13; i++, j++) {
-		objetos[i] = new Invader3({j * 23 + 40, 39}, maxOnScreen);
+		objetos[i] = new Invader3({j * 23 + posInicial, 39}, maxOnScreen);
 		objetos[i]->setPosicao({objetos[i]->getX() + objetos[i]->HitBoxRU.X, objetos[i]->getY()});
+		objetos[i]->setDirecaoX(1);
 		objetos[i]->setColor(i+3);
 	}
 	
@@ -170,7 +178,7 @@ int main() {
 				) {
 					goToXY(0, LIMITEYMAX+10); return 100;
 				}
-		
+
 		Sleep(100);
 	} while (true);
 	

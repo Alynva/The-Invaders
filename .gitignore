@@ -47,9 +47,5 @@ Temporary Items
 .apdisk
 *.exe
 *.o
-*.o
-Objeto.o
-*.o
-Atirador.o
 *.win
 *.layout
