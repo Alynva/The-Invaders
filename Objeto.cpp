@@ -6,11 +6,7 @@ Objeto::Objeto(COORD posicao, COORD hitboxru, COORD hitboxld, COORD limites):Hit
 }
 
 void Objeto::setX(int x) {
-//	if (x >= LIMITEXMIN && x <= LIMITEXMAX)
-		this->Posicao.X = x;
-//	else if (x > LIMITEXMAX)
-//		this->Posicao.X = LIMITEXMAX;
-//	else if (x < LIMITEXMIN);
+	this->Posicao.X = x;
 }
 
 int Objeto::getX() const {
@@ -18,12 +14,7 @@ int Objeto::getX() const {
 }
 
 void Objeto::setY(int y) {
-//	if (y >= LIMITEYMIN && y <= LIMITEYMAX)
-		this->Posicao.Y = y;
-//	else if (y > LIMITEYMAX)
-//		this->Posicao.Y = LIMITEYMAX;
-//	else if (y < LIMITEYMIN)
-//		this->Posicao.Y = LIMITEYMIN;
+	this->Posicao.Y = y;
 }
 
 int Objeto::getY() const {

@@ -44,143 +44,143 @@ int main() {
 	
 	system("pause");
 	
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-	
-	int i = 0, j = 0;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 31);
 	
 	CONSOLE_SCREEN_BUFFER_INFO csbi;
 
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
 	COORD maxOnScreen {csbi.srWindow.Right - csbi.srWindow.Left, csbi.srWindow.Bottom - csbi.srWindow.Top};
 	
+	int i = 0, j = 0, nvl = 1;
+	
 	// Criando um vetor de Objetos, utilizando a classe base
-	Objeto *objetos[13] = {NULL};
-	Atirador jogador({10, maxOnScreen.Y}, maxOnScreen);
-	Tiro *tiroJogador[1](jogador.getX(), jogador.getY() + jogador.HitBoxRU.Y);
-	
-	// Inicializando os objetos com classes derivadas da classe base
-	
-
-	objetos[0] = new Invader5({10, 5}, maxOnScreen);
-	objetos[0]->setPosicao({(short int) objetos[0]->getX() + objetos[0]->HitBoxRU.X, (short int) objetos[0]->getY()});
-	objetos[0]->setDirecaoX(3);
-	objetos[0]->setColor(12);
-	
-	posInicial = rand() % maxOnScreen.X;
-	for (i = 1, j = 0; i < 4; i++, j++) {
-		objetos[i] = new Invader2({(short int) j * 23 + 30, (short int) 13}, maxOnScreen);
-		objetos[i]->setPosicao({(short int) objetos[i]->getX() + objetos[i]->HitBoxRU.X, (short int) objetos[i]->getY()});
-		objetos[i]->setDirecaoX(-1);
-		objetos[i]->setColor(i);
-	}
-	
-	posInicial = rand() % maxOnScreen.X;
-	for (i = 4, j = 0; i < 7; i++, j++) {
-		objetos[i] = new Invader4({j * 15 + posInicial, 23}, maxOnScreen);
-		objetos[i]->setPosicao({objetos[i]->getX() + objetos[i]->HitBoxRU.X, objetos[i]->getY()});
-		objetos[i]->setDirecaoX(1);
-		objetos[i]->setColor(i);
-	}
-	
-	posInicial = rand() % maxOnScreen.X;
-	for (i = 7, j = 0; i < 10; i++, j++) {
-		objetos[i] = new Invader1({j * 19 + posInicial, 31}, maxOnScreen);
-		objetos[i]->setPosicao({objetos[i]->getX() + objetos[i]->HitBoxRU.X, objetos[i]->getY()});
-		objetos[i]->setDirecaoX(-1);
-		objetos[i]->setColor(i);
-	}
-	
-	posInicial = rand() % maxOnScreen.X;
-	for (i = 10, j = 0; i < 13; i++, j++) {
-		objetos[i] = new Invader3({j * 23 + posInicial, 39}, maxOnScreen);
-		objetos[i]->setPosicao({objetos[i]->getX() + objetos[i]->HitBoxRU.X, objetos[i]->getY()});
-		objetos[i]->setDirecaoX(1);
-		objetos[i]->setColor(i+3);
-	}
-	
-	Tiro *tirosJogador[QTDTIROSJOGADOR] = { NULL };
+	Objeto *aliens;
 	Tiro *tirosAliens[QTDTIROSALIENS] = { NULL };
+	Atirador jogador({10, maxOnScreen.Y}, maxOnScreen);
+	Tiro *tirosJogador[QTDTIROSJOGADOR] = { NULL };
 	int armaAquecidaJogador = 0;
+	
 	do {
-		system("cls");
-							
-		for (j = 0; j < QTDTIROSALIENS; j++)
-			if (tirosAliens[j] != NULL) {
-				tirosAliens[j]->mover();
-				tirosAliens[j]->imprime();
-				if (tirosAliens[j]->getPosicao().Y > maxOnScreen.Y - 4)
-					tirosAliens[j] = { NULL };
-			}
-							
-		for (j = 0; j < QTDTIROSJOGADOR; j++)
-			if (tirosJogador[j] != NULL) {
-				tirosJogador[j]->mover();
-				tirosJogador[j]->imprime();
-				if (tirosJogador[j]->getPosicao().Y < 4)
-					tirosJogador[j] = { NULL };
-			}
-		
-		for (i = 0; i < 13; i++) {
-			if (objetos[i] != NULL) {
-				// Atualiza a posição do objeto, de acordo com o "vetor" direção dele
-				objetos[i]->mover();
-				
-				if (rand() % 100 < 2) {
-					int index = rand() % QTDTIROSALIENS;
-						if (tirosAliens[index] == NULL) {
-							tirosAliens[index] = new Tiro({(short int) objetos[i]->getX(), (short int) objetos[i]->getY() - objetos[i]->HitBoxLD.Y});
-							tirosAliens[index]->setDirecao({0, 3});
-						}
-				}
-				
-				// Imprime o objeto em sua devida posição
-				objetos[i]->imprime();
-				
-				for (j = 0; j < QTDTIROSJOGADOR; j++)
-					if (tirosJogador[j] != NULL)
-						if (
-							tirosJogador[j]->getPosicao().X >= objetos[i]->getPosicao().X + objetos[i]->HitBoxLD.X &&
-							tirosJogador[j]->getPosicao().X <= objetos[i]->getPosicao().X + objetos[i]->HitBoxRU.X &&
-							
-							tirosJogador[j]->getPosicao().Y >= objetos[i]->getPosicao().Y - objetos[i]->HitBoxRU.Y &&
-							tirosJogador[j]->getPosicao().Y <= objetos[i]->getPosicao().Y - objetos[i]->HitBoxLD.Y
-						) {
-							objetos[i] = { NULL };
-							tirosJogador[j] = { NULL };
-							break;
-						}
-			}
-		}
-		
-		jogador.goToMouseX(wFont);
-		
-		if (!armaAquecidaJogador)
-			for (j = 0; j < QTDTIROSJOGADOR; j++)
-				if (tirosJogador[j] == NULL) {
-					tirosJogador[j] = new Tiro({(short int) jogador.getX(), (short int) jogador.getY() - jogador.HitBoxLD.Y});
-					tirosJogador[j]->setDirecao({0, -3});
-					armaAquecidaJogador -= 10;
-					break;
-				}
-		jogador.imprime();
-		
-		if (armaAquecidaJogador < 0)
-		armaAquecidaJogador++;
-		
-		for (j = 0; j < QTDTIROSALIENS; j++)
-			if (tirosAliens[j] != NULL)
-				if (
-					tirosAliens[j]->getPosicao().X >= jogador.getPosicao().X + jogador.HitBoxLD.X &&
-					tirosAliens[j]->getPosicao().X <= jogador.getPosicao().X + jogador.HitBoxRU.X &&
-					
-					tirosAliens[j]->getPosicao().Y >= jogador.getPosicao().Y - jogador.HitBoxRU.Y &&
-					tirosAliens[j]->getPosicao().Y <= jogador.getPosicao().Y - jogador.HitBoxLD.Y
-				) {
-					goToXY(0, LIMITEYMAX+10); return 100;
-				}
+	
 
-		Sleep(100);
-	} while (true);
+	//	objetos[0] = new Invader5({10, 5}, maxOnScreen);
+	//	objetos[0]->setPosicao({(short int) objetos[0]->getX() + objetos[0]->HitBoxRU.X, (short int) objetos[0]->getY()});
+	//	objetos[0]->setDirecaoX(3);
+	//	objetos[0]->setColor(12);
+	//	
+	//	posInicial = rand() % maxOnScreen.X;
+	//	for (i = 1, j = 0; i < 4; i++, j++) {
+	//		objetos[i] = new Invader2({(short int) j * 23 + 30, (short int) 13}, maxOnScreen);
+	//		objetos[i]->setPosicao({(short int) objetos[i]->getX() + objetos[i]->HitBoxRU.X, (short int) objetos[i]->getY()});
+	//		objetos[i]->setDirecaoX(-1);
+	//		objetos[i]->setColor(i);
+	//	}
+	//	
+	//	posInicial = rand() % maxOnScreen.X;
+	//	for (i = 4, j = 0; i < 7; i++, j++) {
+	//		objetos[i] = new Invader4({j * 15 + posInicial, 23}, maxOnScreen);
+	//		objetos[i]->setPosicao({objetos[i]->getX() + objetos[i]->HitBoxRU.X, objetos[i]->getY()});
+	//		objetos[i]->setDirecaoX(1);
+	//		objetos[i]->setColor(i);
+	//	}
+	//	
+	//	posInicial = rand() % maxOnScreen.X;
+	//	for (i = 7, j = 0; i < 10; i++, j++) {
+	//		objetos[i] = new Invader1({j * 19 + posInicial, 31}, maxOnScreen);
+	//		objetos[i]->setPosicao({objetos[i]->getX() + objetos[i]->HitBoxRU.X, objetos[i]->getY()});
+	//		objetos[i]->setDirecaoX(-1);
+	//		objetos[i]->setColor(i);
+	//	}
+	//	
+	//	posInicial = rand() % maxOnScreen.X;
+	//	for (i = 10, j = 0; i < 13; i++, j++) {
+	//		objetos[i] = new Invader3({j * 23 + posInicial, 39}, maxOnScreen);
+	//		objetos[i]->setPosicao({objetos[i]->getX() + objetos[i]->HitBoxRU.X, objetos[i]->getY()});
+	//		objetos[i]->setDirecaoX(1);
+	//		objetos[i]->setColor(i+3);
+	//	}
+		
+		do {
+			system("cls");
+								
+			for (j = 0; j < QTDTIROSALIENS; j++)
+				if (tirosAliens[j] != NULL) {
+					tirosAliens[j]->mover();
+					tirosAliens[j]->imprime();
+					if (tirosAliens[j]->getPosicao().Y > maxOnScreen.Y - 4)
+						tirosAliens[j] = { NULL };
+				}
+								
+			for (j = 0; j < QTDTIROSJOGADOR; j++)
+				if (tirosJogador[j] != NULL) {
+					tirosJogador[j]->mover();
+					tirosJogador[j]->imprime();
+					if (tirosJogador[j]->getPosicao().Y < 4)
+						tirosJogador[j] = { NULL };
+				}
+			
+	//		for (i = 0; i < 13; i++) {
+	//			if (objetos[i] != NULL) {
+	//				// Atualiza a posição do objeto, de acordo com o "vetor" direção dele
+	//				objetos[i]->mover();
+	//				
+	//				if (rand() % 100 < 2) {
+	//					int index = rand() % QTDTIROSALIENS;
+	//						if (tirosAliens[index] == NULL) {
+	//							tirosAliens[index] = new Tiro({(short int) objetos[i]->getX(), (short int) objetos[i]->getY() - objetos[i]->HitBoxLD.Y});
+	//							tirosAliens[index]->setDirecao({0, 3});
+	//						}
+	//				}
+	//				
+	//				// Imprime o objeto em sua devida posição
+	//				objetos[i]->imprime();
+	//				
+	//				for (j = 0; j < QTDTIROSJOGADOR; j++)
+	//					if (tirosJogador[j] != NULL)
+	//						if (
+	//							tirosJogador[j]->getPosicao().X >= objetos[i]->getPosicao().X + objetos[i]->HitBoxLD.X &&
+	//							tirosJogador[j]->getPosicao().X <= objetos[i]->getPosicao().X + objetos[i]->HitBoxRU.X &&
+	//							
+	//							tirosJogador[j]->getPosicao().Y >= objetos[i]->getPosicao().Y - objetos[i]->HitBoxRU.Y &&
+	//							tirosJogador[j]->getPosicao().Y <= objetos[i]->getPosicao().Y - objetos[i]->HitBoxLD.Y
+	//						) {
+	//							objetos[i] = { NULL };
+	//							tirosJogador[j] = { NULL };
+	//							break;
+	//						}
+	//			}
+	//		}
+			
+			jogador.goToMouseX(wFont);
+			
+			if (!armaAquecidaJogador)
+				for (j = 0; j < QTDTIROSJOGADOR; j++)
+					if (tirosJogador[j] == NULL) {
+						tirosJogador[j] = new Tiro({(short int) jogador.getX(), (short int) jogador.getY() - jogador.HitBoxLD.Y});
+						tirosJogador[j]->setDirecao({0, -3});
+						armaAquecidaJogador -= 10;
+						break;
+					}
+			jogador.imprime();
+			
+			if (armaAquecidaJogador < 0)
+			armaAquecidaJogador++;
+			
+			for (j = 0; j < QTDTIROSALIENS; j++)
+				if (tirosAliens[j] != NULL)
+					if (
+						tirosAliens[j]->getPosicao().X >= jogador.getPosicao().X + jogador.HitBoxLD.X &&
+						tirosAliens[j]->getPosicao().X <= jogador.getPosicao().X + jogador.HitBoxRU.X &&
+						
+						tirosAliens[j]->getPosicao().Y >= jogador.getPosicao().Y - jogador.HitBoxRU.Y &&
+						tirosAliens[j]->getPosicao().Y <= jogador.getPosicao().Y - jogador.HitBoxLD.Y
+					) {
+						goToXY(0, LIMITEYMAX+10); return 100;
+					}
+	
+			Sleep(100);
+		} while (true);
+	} while (nvl < 5);
 	
 	goToXY(0, LIMITEYMAX+10); return 7;
 }

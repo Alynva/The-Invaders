@@ -14,16 +14,6 @@ void Atirador::goToMouseX(int wFont) {
 }
 
 void Atirador::imprime() const {
-//	for (int i = 0; i < QTDTIROS; i++) {
-//		if (tiros[i] != NULL) {
-//			if (tiros[i]->getPosicao().Y > 1) {
-//				tiros[i]->mover();
-//				tiros[i]->imprime();
-//			} else {
-//				tiros[i] = { NULL };
-//			}
-//		}
-//	}
 	
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), this->getColor());
 	
@@ -40,4 +30,5 @@ void Atirador::imprime() const {
 	goToXY(this->getX() - 6, this->getY() - 1); cout << "@@@@@@@@@@@@@";
 	goToXY(this->getX() - 6, this->getY()); cout << "@@@@@@@@@@@@@";
 
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 31);
 }

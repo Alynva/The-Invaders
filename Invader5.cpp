@@ -45,4 +45,6 @@ void Invader5::imprime() const {
 	// LINHA 7
 	goToXY(this->getX() - 5, this->getY() + 3); cout << "@";
 	goToXY(this->getX() + 5, this->getY() + 3); cout << "@";
+	
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 31);
 };

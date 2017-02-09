@@ -22,7 +22,7 @@ class Objeto {
 		// Coordenada da posição e um "vetor" que define a direção do movimento
 		COORD Posicao;
 		COORD Direcao;
-		int Color = 15;
+		int Color = 31;
 	public:
 		const COORD HitBoxRU; // U == "UP" && R == "RIGTH"
 		const COORD HitBoxLD; // D == "DOWN" && L == "LEFT"

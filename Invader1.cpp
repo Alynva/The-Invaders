@@ -69,5 +69,5 @@ void Invader1::imprime() const {
 		goToXY(this->getX() + 1, this->getY() + 4); cout << "@@";
 	}
 	
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 31);
 }
